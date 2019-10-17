@@ -58,7 +58,7 @@ pub fn gauss_elimination<T>(mat: Mat<T>) where T: PartialEq + Zero + Add + Mul<O
         let pivot = {
             let mut r = None;
             for row in col..rows {
-                if mat[(row, col)] != T::zero() {
+                if mat[(row, col)] != T::ZERO {
                     r = Some(row);
                     break;
                 }

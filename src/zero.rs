@@ -4,7 +4,7 @@
 /// `x + T::zero() == x`.
 pub trait Zero: Sized {
     /// The "zero" (usually, additive identity) for this type.
-    fn zero() -> Self;
+    const ZERO: Self;
 }
 
 /// Types that have a "one" value.
@@ -13,18 +13,16 @@ pub trait Zero: Sized {
 /// `x * T::one() == x`.
 pub trait One: Sized {
     /// The "one" (usually, multiplicative identity) for this type.
-    fn one() -> Self;
+    const ONE: Self;
 }
 
 macro_rules! zero_one_impl {
     ($($t:ty)*) => ($(
         impl Zero for $t {
-            #[inline]
-            fn zero() -> Self { 0 }
+            const ZERO: Self = 0;
         }
         impl One for $t {
-            #[inline]
-            fn one() -> Self { 1 }
+            const ZERO: Self = 1;
         }
     )*)
 }
@@ -32,13 +30,11 @@ zero_one_impl! { u8 u16 u32 u64 usize i8 i16 i32 i64 isize }
 
 macro_rules! zero_one_impl_float {
     ($($t:ty)*) => ($(
-        impl Zero for $t {
-            #[inline]
-            fn zero() -> Self { 0.0 }
+         impl Zero for $t {
+            const ZERO: Self = 0.0;
         }
         impl One for $t {
-            #[inline]
-            fn one() -> Self { 1.0 }
+            const ZERO: Self = 1.0;
         }
     )*)
 }
