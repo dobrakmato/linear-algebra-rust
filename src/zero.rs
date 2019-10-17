@@ -22,7 +22,7 @@ macro_rules! zero_one_impl {
             const ZERO: Self = 0;
         }
         impl One for $t {
-            const ZERO: Self = 1;
+            const ONE: Self = 1;
         }
     )*)
 }
@@ -34,7 +34,7 @@ macro_rules! zero_one_impl_float {
             const ZERO: Self = 0.0;
         }
         impl One for $t {
-            const ZERO: Self = 1.0;
+            const ONE: Self = 1.0;
         }
     )*)
 }
